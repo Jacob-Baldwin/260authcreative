@@ -1,0 +1,26 @@
+.Footnote {
+  font-size: 10px;
+}
+
+.Posts {
+  width: 40%;
+  margin: auto;
+  left: 0px;
+  right: 0px;
+}
+
+.Post {
+  width: 75%;
+  margin: auto;
+  left: 0px;
+  right: 0px;
+  background-color: rgb(241, 240, 240);
+  margin-top: 10px;
+  margin-bottom: 10px;
+  text-align: left;
+  word-wrap: break-word;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
