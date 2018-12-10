@@ -22,7 +22,6 @@ else {
 
 require('./models/users_model.js');
 
-
 var db = mongoose.connection; //Saves the connection as a variable to use
 db.on('error', console.error.bind(console, 'connection error:')); //Checks for connection errors
 db.once('open', function() { //Lets us know when we're connected
@@ -57,6 +56,12 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+
+app.use(express.static('build'));
+
+app.get('*', (req,res) =>{
+  res.sendFile('index.html', {root:"build"});
+});
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
