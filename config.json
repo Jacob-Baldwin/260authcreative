@@ -1,0 +1,10 @@
+{
+  "mongo": {
+    "address": "localhost",
+    "port": "27017",
+    "database": "cs260lab6",
+    "authDB": null,
+    "user": null,
+    "password": null
+  }
+}
