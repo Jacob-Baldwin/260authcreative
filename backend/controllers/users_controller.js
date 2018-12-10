@@ -18,12 +18,12 @@ exports.signup = function(req, res){
     console.log(err);
     if (err){
       res.session.error = err;
-      res.redirect('/signup');
+      res.status(403).send(err);
     } else {
       req.session.user = user.id;
       req.session.username = user.username;
       req.session.msg = 'Authenticated as ' + user.username;
-      res.redirect('/');
+      res.status(200).send();
     }
   });
 };
@@ -41,7 +41,7 @@ exports.login = function(req, res){
         req.session.username = user.username;
         req.session.msg = 'Authenticated as ' + user.username;
         req.session.color = user.color;
-        res.redirect('/');
+        res.status(200).send();
       });
     }else{
       err = 'Authentication failed.';
@@ -49,7 +49,7 @@ exports.login = function(req, res){
     if(err){
       req.session.regenerate(function(){
         req.session.msg = err;
-        res.redirect('/login');
+        res.status(403).send(err);
       });
     }
   });

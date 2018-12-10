@@ -2,14 +2,14 @@ import React from 'react';
 import axios from 'axios';
 import { Route, Redirect } from 'react-router'
 
-class Signup extends React.Component {
+class Login extends React.Component {
   constructor() {
     super();
     this.state = {
-      email: "",
       username: "",
       password: "",
-      redirect: null
+      redirect: null,
+      message: null
     };
 
     this.post = this.post.bind(this);
@@ -23,15 +23,20 @@ class Signup extends React.Component {
   post() {
     let self = this;
 
-    axios.post('/signup', this.state)
+    axios.post('/login', this.state)
     .then(function (response) {
       console.log(response);
       self.setState({
-        redirect: <Redirect to="/login" push={true}/>
+        redirect: <Redirect to="/" push={true}/>
       });
     })
     .catch(function (error) {
-      console.log(error);
+      console.log(error.response.data);
+
+      self.setState({
+        message: error.response.data
+      })
+
       throw error;
     });
   }
@@ -47,16 +52,16 @@ class Signup extends React.Component {
   render() {
     return (
       <div>
-        <h3>Signup</h3>
+        <h3>Login</h3>
         Username:<input type="text" id="username" onChange={(e) => {this.editField(e, "username")}}/> <br/>
-        Email:<input type="text" id="email" onChange={(e) => {this.editField(e, "email")}}/> <br/>
         Password:<input type="password" id="password" onChange={(e) => {this.editField(e, "password")}}/> <br/>
-        <button onClick={this.post}>Submit</button>
+        <button onClick={this.post}>Submit</button> <br />
         {this.state.redirect}
+        {this.state.message}
       </div>
     )
   }
 
 }
 
-export default Signup;
+export default Login;
