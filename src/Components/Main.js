@@ -1,8 +1,8 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
-import Posts from './Posts';
-import NewPost from './NewPost';
-import About from './About';
+import Signup from './Signup';
+// import NewPost from './NewPost';
+// import About from './About';
 
 import styles from './Main.css'
 
@@ -14,9 +14,9 @@ import styles from './Main.css'
 const Main = () => (
   <main className="Main">
     <Switch>
-      <Route exact path='/' component={Posts}/>
-      <Route path='/new' component={NewPost}/>
-      <Route path='/about' component={About}/>
+      {/* <Route exact path='/' component={Posts}/>
+      <Route path='/new' component={NewPost}/> */}
+      <Route path='/signup' component={Signup}/>
     </Switch>
   </main>
 )
