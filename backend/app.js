@@ -8,7 +8,7 @@ var expressSession = require('express-session');
 var mongoStore = require('connect-mongo')({session: expressSession});
 var mongoose = require('mongoose');
 
-var config = require('./config.json');
+var config = require('../config.json');
 
 if (config.mongo.user) {
   mongoose.connect('mongodb://' + config.mongo.user +
