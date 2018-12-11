@@ -47,7 +47,7 @@ console.log("before / Route");
 router.get('/logout', function(req, res){
     console.log("/logout Route");
     req.session.destroy(function(){
-      res.status(200).send();
+      res.redirect('/');
     });
   });
 router.post('/signup', users.signup);
