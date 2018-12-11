@@ -51,8 +51,14 @@ exports.upload = function(req, res, next) {
 };
 
 exports.download = function(req, res, next) {
-  console.log("in download function");
-  path = path.join(__dirname, "../../files", req.params.filename);
-  console.log(path);
-  res.sendFile(path);
+  try {
+    console.log("in download function");
+    path = path.join(__dirname, "../../files", req.params.filename);
+    console.log(path);
+    res.sendFile(path);
+  }
+  catch (err) {
+    console.log(err);
+    res.status(500).send(err);
+  }
 };
