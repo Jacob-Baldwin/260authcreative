@@ -19,6 +19,7 @@ exports.upload = function(req, res, next) {
   let file = req.files.fileupload;
   let body = req.body;
 
+  // remove whitespace and upper case letters from the filename
   let filename = file.name.toLowerCase().replace(/ /g,'');
 
 

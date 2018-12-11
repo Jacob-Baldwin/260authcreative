@@ -94,6 +94,12 @@ class Files extends React.Component {
       return (
         <div>
           <h3>File Hosting Demo</h3>
+          <p>
+            I decided to make a site the replicates the basic functionality of a cloud file hosting website
+            such as Dropbox, Google Drive, or Box. Make an account and upload your files, and share them
+            with your friends! Files are publically accessible at their url, but your files won't be
+            listed for other users.
+          </p>
           <p>Have an account?</p>
             <p><Link to="/login">Login</Link> </p>
             <p><Link to="/signup">Signup</Link></p>
