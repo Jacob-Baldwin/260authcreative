@@ -60,5 +60,6 @@ router.get('/files', files.getFiles);
 
 router.post('/upload', files.upload);
 
+router.get('/download/:filename', files.download);
 
 module.exports = router;

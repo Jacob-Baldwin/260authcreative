@@ -11,16 +11,19 @@ class Files extends React.Component {
       username: "",
       password: "",
       redirect: null,
-      user: null
+      user: null,
+      files: null
     };
 
     this.getUser = this.getUser.bind(this);
+    this.getFiles = this.getFiles.bind(this);
     this.editField = this.editField.bind(this);
   }
 
   componentDidMount() {
     let self = this;
     this.getUser();
+    this.getFiles();
   }
 
   getUser() {
@@ -31,6 +34,22 @@ class Files extends React.Component {
       console.log(response.data);
       self.setState({
         user: response.data
+      });
+    })
+    .catch(function (error) {
+      console.log(error);
+      throw error;
+    });
+  }
+
+  getFiles() {
+    let self = this;
+
+    axios.get('/files')
+    .then(function (response) {
+      console.log(response.data);
+      self.setState({
+        files: response.data
       });
     })
     .catch(function (error) {
@@ -52,6 +71,7 @@ class Files extends React.Component {
       return (
         <div>
           <p>Logged in as: {this.state.user.username}</p>
+
 
 
         </div>

@@ -2,9 +2,10 @@ var crypto = require('crypto');
 var mongoose = require('mongoose'),
     User = mongoose.model('User'),
     File = mongoose.model('File');
+var path = require('path');
 
 exports.getFiles = function(req, res) {
-  File.find({ owner: req.session.user._id })
+  File.find({ owner: req.session.user })
   .exec(function(err, files) {
     if (!files){
       res.json(404, {err: 'User Not Found.'});
@@ -16,23 +17,24 @@ exports.getFiles = function(req, res) {
 
 exports.upload = function(req, res, next) {
   let file = req.files.fileupload;
-  console.log("File");
-  console.log(file);
   let body = req.body;
 
-  file.mv(`build/${file.name}`, function(err) {
+  file.mv(`files/${file.name}`, function(err) {
     if (err) {
       console.log(err);
       return res.status(500).send(err);
     }
     else {
-      var filerecord = new File({filename: file.name});
+      var filerecord = new File({
+        filename: file.name,
+        owner: req.session.user
+      });
 
-      filerecord.owner = req.session.user._id;
+      console.log(filerecord);
 
       filerecord.save(function(err) {
-        console.log(err);
         if (err){
+          console.log(err);
           res.session.error = err;
           res.status(403).send(err);
         } else {
@@ -43,3 +45,9 @@ exports.upload = function(req, res, next) {
   });
 };
 
+exports.download = function(req, res, next) {
+  console.log("in download function");
+  path = path.join(__dirname, "../../files", req.params.filename);
+  console.log(path);
+  res.sendFile(path);
+};
