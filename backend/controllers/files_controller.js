@@ -19,14 +19,17 @@ exports.upload = function(req, res, next) {
   let file = req.files.fileupload;
   let body = req.body;
 
-  file.mv(`files/${file.name}`, function(err) {
+  let filename = file.name.toLowerCase();
+
+  file.mv(`files/${filename}`, function(err) {
     if (err) {
       console.log(err);
       return res.status(500).send(err);
     }
     else {
       var filerecord = new File({
-        filename: file.name,
+        displayname: file.name,
+        filename: filename,
         owner: req.session.user
       });
 
