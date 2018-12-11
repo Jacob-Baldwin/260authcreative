@@ -28,7 +28,7 @@ class Files extends React.Component {
 
     axios.get('/user/profile')
     .then(function (response) {
-      console.log(response);
+      console.log(response.data);
       self.setState({
         user: response.data
       });
@@ -51,7 +51,9 @@ class Files extends React.Component {
     if (this.state.user) {
       return (
         <div>
-          Logged in
+          <p>Logged in as: {this.state.user.username}</p>
+
+
         </div>
       )
     }

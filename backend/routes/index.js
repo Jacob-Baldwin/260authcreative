@@ -3,6 +3,8 @@ var router = express.Router();
 var expressSession = require('express-session');
 
 var users = require('../controllers/users_controller');
+var files = require('../controllers/files_controller');
+
 console.log("before / Route");
 // router.get('/', function(req, res){
 //     console.log("/ Route");
@@ -53,6 +55,10 @@ router.post('/user/update', users.updateUser);
 router.post('/user/delete', users.deleteUser);
 router.post('/login', users.login);
 router.get('/user/profile', users.getUserProfile);
+
+router.get('/files', files.getFiles);
+
+router.post('/upload', files.upload);
 
 
 module.exports = router;

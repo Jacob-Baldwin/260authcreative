@@ -1,6 +1,7 @@
 var crypto = require('crypto');
 var mongoose = require('mongoose'),
-    User = mongoose.model('User');
+    User = mongoose.model('User'),
+    File = mongoose.model('File');
 function hashPW(pwd){
   return crypto.createHash('sha256').update(pwd).
          digest('base64').toString();

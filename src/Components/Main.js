@@ -3,6 +3,7 @@ import { Switch, Route } from 'react-router-dom';
 import Signup from './Signup';
 import Login from './Login';
 import Files from './Files';
+import Upload from './Upload';
 
 import styles from './Main.css'
 
@@ -18,6 +19,7 @@ const Main = () => (
       <Route path='/new' component={NewPost}/> */}
       <Route path='/signup' component={Signup}/>
       <Route path='/login' component={Login}/>
+      <Route path='/upload' component={Upload}/>
       <Route exact path='/' component={Files}/>
     </Switch>
   </main>

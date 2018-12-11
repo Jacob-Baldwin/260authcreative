@@ -7,6 +7,7 @@ var bodyParser = require('body-parser');
 var expressSession = require('express-session');
 var mongoStore = require('connect-mongo')({session: expressSession});
 var mongoose = require('mongoose');
+var fileupload = require('express-fileupload');
 
 var config = require('../config.json');
 
@@ -21,6 +22,7 @@ else {
 }
 
 require('./models/users_model.js');
+require('./models/files_model.js');
 
 var db = mongoose.connection; //Saves the connection as a variable to use
 db.on('error', console.error.bind(console, 'connection error:')); //Checks for connection errors
@@ -48,6 +50,7 @@ app.set('view engine', 'html');
 
 
 app.use(logger('dev'));
+app.use(fileupload());
 // app.use(json());
 // app.use(express.urlencoded({ extended: false }));
 app.use(bodyParser());
