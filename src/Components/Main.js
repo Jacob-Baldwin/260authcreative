@@ -2,7 +2,7 @@ import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 import Signup from './Signup';
 import Login from './Login';
-// import About from './About';
+import Files from './Files';
 
 import styles from './Main.css'
 
@@ -18,6 +18,7 @@ const Main = () => (
       <Route path='/new' component={NewPost}/> */}
       <Route path='/signup' component={Signup}/>
       <Route path='/login' component={Login}/>
+      <Route exact path='/' component={Files}/>
     </Switch>
   </main>
 )

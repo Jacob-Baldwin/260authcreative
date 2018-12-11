@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
-import { Route, Redirect } from 'react-router'
+import { Route, Redirect} from 'react-router'
+import { Link } from 'react-router-dom'
 
 class Login extends React.Component {
   constructor() {
@@ -55,7 +56,10 @@ class Login extends React.Component {
         <h3>Login</h3>
         Username:<input type="text" id="username" onChange={(e) => {this.editField(e, "username")}}/> <br/>
         Password:<input type="password" id="password" onChange={(e) => {this.editField(e, "password")}}/> <br/>
-        <button onClick={this.post}>Submit</button> <br />
+        <button onClick={this.post}>Submit</button>
+        <p>
+          Don't have an account? <Link to="/signup">Signup</Link>
+        </p>
         {this.state.redirect}
         {this.state.message}
       </div>

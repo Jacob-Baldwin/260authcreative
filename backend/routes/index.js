@@ -42,12 +42,12 @@ console.log("before / Route");
 //     }
 //     res.render('login', {msg:req.session.msg});
 // });
-// router.get('/logout', function(req, res){
-//     console.log("/logout Route");
-//     req.session.destroy(function(){
-//       res.redirect('/login');
-//     });
-//   });
+router.get('/logout', function(req, res){
+    console.log("/logout Route");
+    req.session.destroy(function(){
+      res.status(200).send();
+    });
+  });
 router.post('/signup', users.signup);
 router.post('/user/update', users.updateUser);
 router.post('/user/delete', users.deleteUser);
