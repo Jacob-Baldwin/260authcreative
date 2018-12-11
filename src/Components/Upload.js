@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import { Route, Redirect } from 'react-router'
+import { Link } from 'react-router-dom'
 
 class Upload extends React.Component {
   constructor(props) {
@@ -42,6 +43,7 @@ class Upload extends React.Component {
           <button>Upload</button>
         </div>
         {this.state.redirect}
+        <p><Link to="/">My Files</Link></p>
       </form>
     );
   }

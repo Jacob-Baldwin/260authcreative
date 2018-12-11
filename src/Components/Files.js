@@ -12,7 +12,7 @@ class Files extends React.Component {
       password: "",
       redirect: null,
       user: null,
-      files: null
+      files: []
     };
 
     this.getUser = this.getUser.bind(this);
@@ -67,12 +67,25 @@ class Files extends React.Component {
   }
 
   render() {
+    let files = this.state.files.map((f) => {
+      return (
+        <div>
+          <a href={"download/" + f.filename}>{f.displayname}</a>
+        </div>
+      );
+    });
+
     if (this.state.user) {
       return (
         <div>
           <p>Logged in as: {this.state.user.username}</p>
+          <p><a href="/logout">Logout</a></p>
+          <p><Link to="/upload">Upload New File</Link></p>
 
-
+          <h2>My Files</h2>
+          <div>
+            {files}
+          </div>
 
         </div>
       )

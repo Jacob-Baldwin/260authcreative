@@ -19,7 +19,8 @@ exports.upload = function(req, res, next) {
   let file = req.files.fileupload;
   let body = req.body;
 
-  let filename = file.name.toLowerCase();
+  let filename = file.name.toLowerCase().replace(/ /g,'');
+
 
   file.mv(`files/${filename}`, function(err) {
     if (err) {
